@@ -71,17 +71,15 @@ class elasticsearch::repo {
       Class['apt::update'] -> Package[$elasticsearch::package_name]
 
       apt::source { 'elasticsearch':
-        ensure   => $elasticsearch::ensure,
-        location => $_baseurl,
-        release  => 'stable',
-        repos    => 'main',
-        key      => {
-          'id'     => $::elasticsearch::repo_key_id,
-          'source' => $::elasticsearch::repo_key_source,
-        },
+        ensure      => $elasticsearch::ensure,
+        location    => $_baseurl,
+        release     => 'stable',
+        repos       => 'main',
+        key         => '$::elasticsearch::repo_key_id',
+        key_server  => 'hkp://ha.pool.sks-keyservers.net:80',
         include_src => false,
         include_deb => true,
-        pin      => $elasticsearch::repo_priority,
+        pin         => $elasticsearch::repo_priority,
       }
     }
     'RedHat', 'Linux': {
