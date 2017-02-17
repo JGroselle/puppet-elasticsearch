@@ -32,7 +32,7 @@ class elasticsearch::repo {
 
   if $elasticsearch::ensure == 'present' {
     if versioncmp($elasticsearch::repo_version, '5.0') >= 0 {
-      $_repo_url = 'https://artifacts.elastic.co/packages'
+      $_repo_url = 'http://artifacts.elastic.co/packages'
       case $::osfamily {
         'Debian': {
           $_repo_path = 'apt'
