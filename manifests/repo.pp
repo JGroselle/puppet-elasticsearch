@@ -79,10 +79,8 @@ class elasticsearch::repo {
           'id'     => $::elasticsearch::repo_key_id,
           'source' => $::elasticsearch::repo_key_source,
         },
-        include  => {
-          'src' => false,
-          'deb' => true,
-        },
+        include_src => false,
+        include_deb => true,
         pin      => $elasticsearch::repo_priority,
       }
     }
